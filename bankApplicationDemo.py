@@ -38,6 +38,7 @@ def ministatement(mini):
     print(mini)
 
 
+
 curr_bal = 20000
 c = 1
 mini = {'Sno': [], 'Acc_no': [], 'transaction_type': [], 'date': []}
