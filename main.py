@@ -2,10 +2,10 @@
 Main for execution of CSB
 """
 acc = {
-    "AccNo": "A100",
-    "Balance": 20000,
-    "Name": "Venkat",
-    "Transactions": [{"type": "debit", "amount": 20000, "date": "2023-03-12"}]
+    "AccNo": "A550",
+    "Balance": 50000,
+    "Name": "Mahitha",
+    "Transactions": [{"type": "debit", "amount": 50000, "date": "2023-03-13"}]
 }
 
 
@@ -19,18 +19,31 @@ def deposit():
 
 
 def withdraw():
-    print("Inside withdraw()")
+    amt = int(input("Enter the amount to withdraw: "))
+    acc["withdraw"] = amt
+    # acc["withdraw"] = acc["withdraw"] amt
+    print("Transaction completed successfully")
+    print("Your New Balance is: {}".format(acc["balance"]))
     show_options()
 
 
 def balance():
-    print("Inside balance()")
+    amt = int(input("Enter the balance amount: "))
+    acc["Balance"] += amt
+    # acc["Balance"] = acc["Balance"] + amt
+    print("Inside Balance amount ")
+    print("Your New Balance is: {}".format(acc["Balance"]))
     show_options()
 
 
 def mini_statement():
-    print("Inside mini_statement()")
+    amt = int(input("Enter the mini_statement: "))
+    acc["Balance"] += amt
+    # acc["Balance"] = acc["Balance"] + amt
+    print("Inside mini_statement ")
+    print("Your New Balance is: {}".format(acc["Balance"]))
     show_options()
+
 
 
 def show_options():
