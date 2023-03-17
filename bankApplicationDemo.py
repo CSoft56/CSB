@@ -9,22 +9,22 @@
 
 def deposit(curr_bal, amount, mini, c):
     curr_bal += amount
-    mini['Sno'].append(c)
-    mini['Acc_no'].append('xxxxxx1234')
-    mini['transaction_type'].append('deposit')
-    mini['date'].append('01-01-2023')
-    print('Transaction is Successful')
+    mini[c] = [c]
+    mini[c].append('xxxxxx1234')
+    mini[c].append('deposit')
+    mini[c].append('01-01-2023')
+    print('Deposit is successful\nYour new balance is {}'.format(curr_bal))
     return curr_bal
 
 
 def withdraw(curr_bal, amount, mini, c):
     if curr_bal >= amount:
         curr_bal -= amount
-        mini['Sno'].append(c)
-        mini['Acc_no'].append('xxxxxx1234')
-        mini['transaction_type'].append('withdraw')
-        mini['date'].append('01-01-2023')
-        print('Transaction is Successful')
+        mini[c] = [c]
+        mini[c].append('xxxxxx1234')
+        mini[c].append('withdraw')
+        mini[c].append('01-01-2023')
+        print('Transaction is Successful\nYour new balance is {}'.format(curr_bal))
     else:
         print('ERROR: Requested amount is greater than current balance')
     return curr_bal
@@ -35,16 +35,18 @@ def balance(curr_bal):
 
 
 def ministatement(mini):
-    print(mini)
-
+    print("{:<10} {:<10} {:<20} {:<10}".format('SNo.', 'Acc_no', 'Transaction_type', 'date'))
+    for key, value in mini.items():
+        sno, acc_no, trans_type, date = value
+        print("{:<10} {:<10} {:<20} {:<10}".format(sno, acc_no, trans_type, date))
 
 
 curr_bal = 20000
 c = 1
-mini = {'Sno': [], 'Acc_no': [], 'transaction_type': [], 'date': []}
+mini = {}
 while True:
     print('Welcome to CareerSoft Bank\n--------------------------------')
-    option = int(input('Select an option\n1.Deposit\n2.Withdraw\n3.Balance\n4.Mini Statement\n5.Exit\n'))
+    option = int(input('Options:\n1.Deposit\n2.Withdraw\n3.Balance\n4.Mini Statement\n5.Exit\nEnter your option:'))
     if option == 1:
         amount = int(input('Enter the amount to deposit:'))
         curr_bal = deposit(curr_bal, amount, mini, c)
