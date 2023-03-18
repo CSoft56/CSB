@@ -1,11 +1,10 @@
-"""
-Main for execution of CSB
-"""
+
+#Main for execution of CSB
 acc = {
-    "AccNo": "A100",
+    "AccNo": "27021999",
     "Balance": 20000,
-    "Name": "Venkat",
-    "Transactions": [{"type": "debit", "amount": 20000, "date": "2023-03-12"}]
+    "Name": "Harsha",
+    "Transactions": [{"type": "debit", "amount": 20000, "date": "2023-03-18"}]
 }
 
 
@@ -15,22 +14,27 @@ def deposit():
     # acc["Balance"] = acc["Balance"] + amt
     print("Transaction completed successfully")
     print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
+
 
 
 def withdraw():
-    print("Inside withdraw()")
-    show_options()
+    amt = int(input("Enter the amount to withdraw: "))
+    acc["Balance"] -= amt
+    # acc["Balance"] = acc["Balance"] - amt
+    print("Transaction completed successfully")
+    print("Your New Balance is: {}".format(acc["Balance"]))
+
+
 
 
 def balance():
-    print("Inside balance()")
-    show_options()
+    print(acc["Balance"])
+
 
 
 def mini_statement():
-    print("Inside mini_statement()")
-    show_options()
+    print(acc)
+
 
 
 def show_options():
@@ -43,21 +47,21 @@ def show_options():
     5. Exit
     """
     print(opts)
-    ch = input("Please select option from above: ")
+    a = input("Please select option from above: ")
 
-    return ch
+    return a
 
 
-if __name__ == '__main__':
-    ch_func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
-    while True:
-        ch = show_options()
 
-        if ch in ch_func_mapping:
-            if ch == "5":
-                print("Logged out Successfully")
-                print("Thank you using CareerSoft Banking Application.")
-            ch_func_mapping[ch]()
-        else:
-            print("Invalid Choice, Please enter Valid choice from 1-5")
+func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
+while True:
+    b = show_options()
+
+    if b in func_mapping:
+        if b == "5":
+            print("Logged out Successfully")
+            print("Thank you using CareerSoft Banking Application.")
+        func_mapping[b]()
+    else:
+        print("Invalid Choice, Please enter Valid choice from 1-5")
 
