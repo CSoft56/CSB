@@ -20,28 +20,19 @@ def deposit():
 
 def withdraw():
     amt = int(input("Enter the amount to withdraw: "))
-    acc["withdraw"] = amt
-    # acc["withdraw"] = acc["withdraw"] amt
+    acc["Balance"] = amt - acc["Balance"]
     print("Transaction completed successfully")
-    print("Your New Balance is: {}".format(acc["balance"]))
+    print("Your New Balance is: {}".format(acc["Balance"]))
     show_options()
 
 
 def balance():
-    amt = int(input("Enter the balance amount: "))
-    acc["Balance"] += amt
-    # acc["Balance"] = acc["Balance"] + amt
-    print("Inside Balance amount ")
     print("Your New Balance is: {}".format(acc["Balance"]))
     show_options()
 
 
 def mini_statement():
-    amt = int(input("Enter the mini_statement: "))
-    acc["Balance"] += amt
-    # acc["Balance"] = acc["Balance"] + amt
-    print("Inside mini_statement ")
-    print("Your New Balance is: {}".format(acc["Balance"]))
+    print("Your last 10 transactions is: {}".format(acc["Transactions"]))
     show_options()
 
 
