@@ -24,7 +24,7 @@ def withdraw():
 
 
 def balance():
-    print("Inside balance()")
+    print("Your New Balance is: {}".format(acc["Balance"]))
     show_options()
 
 
