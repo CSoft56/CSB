@@ -49,6 +49,16 @@ class Transactions:
         print('Inside mini_statement()')
 
 
+"""
+For next class, I need you to:
+1. Modules - move code from main.py to different modules
+2. Make sure all functionalities are working
+3. Move data dict to files (accounts, transactions, users)
+4. Update transaction methods to read data from the files
+5. Try to use a class for transactions
+"""
+
+
 if __name__ == '__main__':
     obj1 = Transactions()
     obj1.deposit()
