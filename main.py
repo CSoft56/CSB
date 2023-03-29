@@ -1,25 +1,29 @@
+import datetime
+
+from Settings import show_options
+from transaction import *
+from datetime import date
+today = datetime.datetime.today()
 """
 Main for execution of CSB
 """
-
-def show_options():
-    opts = """
-    Welcome To CareerSoft Bank
-    
-    1. Deposit
-    2. Withdraw
-    3. Balance
-    4. Mini Statement
-    5. Exit
-    """
-
-    print(opts)
-    ch = input("Please select option from above: ")
-
-    return ch
+acc = {
+    "AccNo": "A100",
+    "Balance": 20000,
+    "Name": "Jagdesh",
+    "Transactions": [{"type": "debit", "amount": 20000, "date": today.strftime("%Y-%m-%d %H-%M-%S")}]
+}
 
 
 if __name__ == '__main__':
-    ch = show_options()
-    print("User selected Option - {}".format(ch))
+    ch_func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
+    while True:
+        ch = show_options()
 
+        if ch in ch_func_mapping:
+            if ch == "5":
+                print("Logged out Successfully")
+                print("Thank you using CareerSoft Banking Application.")
+            ch_func_mapping[ch]()
+        else:
+            print("Invalid Choice, Please enter Valid choice from 1-5")
