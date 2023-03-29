@@ -10,7 +10,7 @@ Main for execution of CSB
 acc = {
     "AccNo": "A100",
     "Balance": 20000,
-    "Name": "Venkat",
+    "Name": "Kapil",
     "Transactions": [{"type": "debit", "amount": 20000, "date": today.strftime("%Y-%m-%d %H-%M-%S")}]
 }
 

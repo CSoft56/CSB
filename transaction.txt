@@ -1,2 +1,1 @@
 TransactionType         Amount              Date
-

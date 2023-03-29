@@ -11,7 +11,7 @@ def deposit():
     acc["Balance"] = updated
     print("Transaction completed successfully")
     acc["Transactions"].append({'type': 'debit', 'amount': updated, 'date': today.strftime("%Y-%m-%d %H-%M-%S")})
-    # print("Your New Balance is: {}".format(acc["Transactions"]))
+    print("Your New Balance is: {}".format(acc["Transactions"][-1]))
 
 
     with open('transaction.txt', 'a') as f:
@@ -26,7 +26,6 @@ def deposit():
         f.write(trans_str)
 
 
-
 def withdraw():
     amt_1 = int(input("Enter the amount to withdraw: "))
     if acc["Balance"] <= amt_1:
@@ -36,7 +35,7 @@ def withdraw():
         acc["Balance"] = updated
         acc["Transactions"].append({'type': 'debit', 'amount': updated, 'date': today.strftime("%Y-%m-%d %H-%M-%S")})
         print("Transaction completed successfully")
-        # print("Your New Balance is: {}".format(acc["Transactions"]))
+        print("Your New Balance is: {}".format(acc["Transactions"][-1]))
 
 
     with open('transaction.txt', 'a') as f:
@@ -56,8 +55,9 @@ def balance():
 
 
 def mini_statement():
-    print(len["Transactions"])
-    if len("Transactions") <= 10:
-        print("Mini Statement is: {}".format(acc["Transactions"]))
-    else:
-        print("Mini Statement is: {}".format(acc["Transactions"][-10]))
+    with open('transaction.txt', 'r') as f:
+        lines = f.readlines()
+        print("Transaction      Amount      Date \n")
+        for txt_line in (lines[-10:]):
+            print(txt_line, end='')
+
