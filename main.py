@@ -1,8 +1,9 @@
+import datetime
 
 from Settings import show_options
 from Transaction import *
 from datetime import date
-today = date.today()
+today = datetime.datetime.today()
 """
 Main for execution of CSB
 """
@@ -10,7 +11,7 @@ acc = {
     "AccNo": "A100",
     "Balance": 20000,
     "Name": "Venkat",
-    "Transactions": [{"type": "debit", "amount": 20000, "date": today.strftime("%Y-%m-%d")}]
+    "Transactions": [{"type": "debit", "amount": 20000, "date": today.strftime("%Y-%m-%d %H-%M-%S")}]
 }
 
 
@@ -26,3 +27,4 @@ if __name__ == '__main__':
             ch_func_mapping[ch]()
         else:
             print("Invalid Choice, Please enter Valid choice from 1-5")
+
