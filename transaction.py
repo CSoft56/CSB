@@ -44,7 +44,7 @@ def withdraw():
         trans_date = datetime.date.today()
         str_trans_date = '{}-{}-{}'.format(trans_date.year, trans_date.month, trans_date.day)
 
-        trans_str = "\n{trans_type}\t\t\t\t{amount}\t\t\t{date_trans}".format(trans_type=type,
+        trans_str = "\n{trans_type}\t\t\t{amount}\t\t\t{date_trans}".format(trans_type=type,
                                                                       amount=Amount,
                                                                       date_trans=str_trans_date)
         f.write(trans_str)

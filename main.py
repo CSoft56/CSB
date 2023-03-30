@@ -16,14 +16,16 @@ acc = {
 
 
 if __name__ == '__main__':
-    ch_func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
+    ch_func_map = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
     while True:
         ch = show_options()
 
-        if ch in ch_func_mapping:
+        if ch in ch_func_map:
             if ch == "5":
                 print("Logged out Successfully")
                 print("Thank you using CareerSoft Banking Application.")
-            ch_func_mapping[ch]()
+            ch_func_map[ch]()
         else:
             print("Invalid Choice, Please enter Valid choice from 1-5")
+
+
