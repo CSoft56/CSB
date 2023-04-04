@@ -1,4 +1,8 @@
-Test with line1
-Test with line2
-[10, 20, 30]
-[10, 20, 30]
+TransactionType     Date        Amount
+Deposit             03/15/2023  10000
+Deposit             03/15/2023  10000
+Withdraw            03/26/2023  10000
+Deposit             03/15/2023  10000
+Deposit             03/15/2023  10000
+Deposit             03/15/2023  10000
+Deposit             03/15/2023  10000

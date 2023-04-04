@@ -1,6 +1,22 @@
 """
 Main for execution of CSB
 """
+users = [{
+    "user_name": "venkat",
+    "password": "csoft"
+},
+    {
+        "user_name": "kapil",
+        "password": "csoft123"
+
+    }]
+
+def login(username, password):
+    for user in users:
+        if user['user_name'] == username and user['password'] == password:
+            return True
+
+    return False
 
 
 if __name__ == '__main__':
@@ -8,6 +24,14 @@ if __name__ == '__main__':
     import sys
 
     print(sys.argv)
+
+    uname = input("Enter username: ")
+    password = input("Enter password: ")
+    if login(uname, password):
+        pass
+    else:
+        print("Invalid user name or password.")
+        exit()
 
     while True:
         ch = show_options()
