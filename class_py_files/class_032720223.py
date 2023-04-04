@@ -5,7 +5,7 @@ import datetime
 
 
 def write_to_transactions(trans_type, trans_amount, trans_date=None):
-    with open('data/transactions.txt', 'a') as f:
+    with open('../data/transactions.txt', 'a') as f:
         if not trans_date:
             trans_date = datetime.date.today()
             trans_date = '{}-{}-{}'.format(trans_date.year, trans_date.month, trans_date.day)
@@ -16,7 +16,7 @@ def write_to_transactions(trans_type, trans_amount, trans_date=None):
         f.write(trans_str)
 
 
-with open('data/transactions.txt', 'a') as f:
+with open('../data/transactions.txt', 'a') as f:
     type = 'Withdraw'
     Amount = 56000
     trans_date = datetime.date.today()

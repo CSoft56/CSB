@@ -74,20 +74,20 @@ File Management
 
 # Opening file using with statement
 # Reading data using read()
-with open('data/csb_data.txt') as f:
+with open('../data/csb_data.txt') as f:
     data = f.read()
     print(data)
 
 
 # Opening file using with statement
 # Reading data using readlines()
-with open('data/csb_data.txt') as f:
+with open('../data/csb_data.txt') as f:
     lines = f.readlines()
     print(lines)
 
 
 # Find the count of each word in a file
-with open('data/csb_data.txt') as f:
+with open('../data/csb_data.txt') as f:
     lines = f.readlines()
     count_dict = {}
     for item in lines:
@@ -103,28 +103,28 @@ with open('data/csb_data.txt') as f:
 
 
 # Add a line to the existing file
-with open('data/csb_data.txt', 'w') as f:
+with open('../data/csb_data.txt', 'w') as f:
     f.write('Test with line1')
 
 # Add a line to the existing file
-with open('data/csb_data.txt', 'a') as f:
+with open('../data/csb_data.txt', 'a') as f:
     f.write('\nTest with line2')
 
 l = [10, 20, 30]
 # Add a line to the existing file
-with open('data/csb_data.txt', 'a') as f:
+with open('../data/csb_data.txt', 'a') as f:
     f.write('\n')
     f.write(str(l))
 
 
 l = [10, 20, 30]
 # Add a line to the existing file
-with open('data/csb_data.txt', 'a') as f:
+with open('../data/csb_data.txt', 'a') as f:
     import json
     f.write('\n')
     f.write(json.dumps(l))
 
 # Other way to open file
-f = open('data/csb_data.txt')
+f = open('../data/csb_data.txt')
 print(f.read())
 f.close()
