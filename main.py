@@ -18,7 +18,33 @@ acc = {
 }
 
 
+def login(username, password):
+
+    with open('users.txt', 'r') as file:
+        for line in file:                       # reading each word
+            for word in line.split():           # displaying the words
+                if word == uname:
+                    for word_ in line.split():
+                        if word_ == password:
+                            print("Authentication is successful")
+                            return True
+        return False
+
+
 if __name__ == '__main__':
+    from settings import show_options
+    import sys
+
+    print(sys.argv)
+
+    uname = input("Enter username: ")
+    password = input("Enter password: ")
+    if login(uname, password):
+        pass
+    else:
+        print("Invalid user name or password.")
+        exit()
+
     my_Object = CSB()               # Create an instance of the class
     ch_func_mapping = {"1": "deposit", "2": "withdraw", "3": "balance", "4": "mini_statement", "5": exit}
     while True:
@@ -37,6 +63,3 @@ if __name__ == '__main__':
                 func()
         else:
             print("Invalid Choice, Please enter Valid choice from 1-5")
-
-
-

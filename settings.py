@@ -1,5 +1,4 @@
 
-
 def show_options():
     opts = """
     Welcome To CareerSoft Bank
@@ -13,4 +12,3 @@ def show_options():
     ch = input("Please select option from above: ")
 
     return ch
-

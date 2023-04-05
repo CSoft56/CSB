@@ -57,4 +57,3 @@ class CSB:
             print("Transaction      Amount      Date \n")
             for txt_line in (lines[-10:]):
                 print(txt_line, end='')
-
