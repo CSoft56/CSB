@@ -1,60 +1,38 @@
 """
 Main for execution of CSB
 """
-acc = {
-    "AccNo": "A100",
-    "Balance": 20000,
-    "Name": "Venkat",
-    "Transactions": [{"type": "debit", "amount": 20000, "date": "2023-03-12"}]
-}
+users = [{
+    "user_name": "venkat",
+    "password": "csoft"
+},
+    {
+        "user_name": "kapil",
+        "password": "csoft123"
 
+    }]
 
-def deposit():
-    amt = int(input("Enter the amount to deposit: "))
-    acc["Balance"] += amt
-    # acc["Balance"] = acc["Balance"] + amt
-    print("Transaction completed successfully")
-    print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
+def login(username, password):
+    for user in users:
+        if user['user_name'] == username and user['password'] == password:
+            return True
 
-
-def withdraw():
-    amt = int(input("Enter the amount to withdraw: "))
-    acc["Balance"] -= amt
-    # acc["Balance"] = acc["Balance"] + amt
-    print("Transaction completed successfully")
-    print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
-
-
-
-def balance():
-    print(acc['Balance'])
-    show_options()
-
-
-def mini_statement():
-    print(acc)
-    show_options()
-
-
-def show_options():
-    opts = """
-    Welcome To CareerSoft Bank
-    1. Deposit
-    2. Withdraw
-    3. Balance
-    4. Mini Statement
-    5. Exit
-    """
-    print(opts)
-    ch = input("Please select option from above: ")
-
-    return ch
+    return False
 
 
 if __name__ == '__main__':
-    ch_func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
+    from services.transactions import show_options, ch_func_mapping
+    import sys
+
+    print(sys.argv)
+
+    uname = input("Enter username: ")
+    password = input("Enter password: ")
+    if login(uname, password):
+        pass
+    else:
+        print("Invalid user name or password.")
+        exit()
+
     while True:
         ch = show_options()
 
@@ -65,3 +43,17 @@ if __name__ == '__main__':
             ch_func_mapping[ch]()
         else:
             print("Invalid Choice, Please enter Valid choice from 1-5")
+
+
+"""
+Built-in Modules
+1. os
+
+2. sys
+3. datetime
+4. re 
+5. 
+
+
+
+"""
