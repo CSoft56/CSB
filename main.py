@@ -1,67 +1,98 @@
 """
 Main for execution of CSB
 """
+
+from trans import *
+#from options import show_options
+from datetime import date
+today = date.today()
+
+
 acc = {
     "AccNo": "A100",
     "Balance": 20000,
-    "Name": "Venkat",
-    "Transactions": [{"type": "debit", "amount": 20000, "date": "2023-03-12"}]
+    "Name": "Kapil",
+    "Transactions": [{"type": "debit", "amount": 20000, "date": today.strftime("%Y-%m-%d %H-%M-%S")}]
 }
 
 
-def deposit():
-    amt = int(input("Enter the amount to deposit: "))
-    acc["Balance"] += amt
-    # acc["Balance"] = acc["Balance"] + amt
-    print("Transaction completed successfully")
-    print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
-
-
-def withdraw():
-    amt = int(input("Enter the amount to withdraw: "))
-    acc["Balance"] -= amt
-    # acc["Balance"] = acc["Balance"] + amt
-    print("Transaction completed successfully")
-    print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
+def login(username, password):
+    with open('login_credentials.txt', 'r') as file:
+        lines = file.readlines()                # read all lines at once
+        for line in lines:                       # iterate over each line
+            fields = line.strip().split(":")        # split the line into fields
+            if len(fields) == 2:                 # check if there are two fields
+                if fields[0] == username and fields[1] == password:
+                    print("Authentication successful")
+                    return True
+        return False
+    # Close the file
 
 
 
-def balance():
-    print(acc['Balance'])
-    show_options()
+    # with open("login_credentials.txt", "r") as f:
+    #     login_credentials = {}
+    #     for line in f:
+    #         # Split each line into a username and password pair
+    #         username, password = line.strip().split(":")
+    #         login_credentials[username] = password
+    #
+    #     if username in login_credentials:
+    #             # If it does, check if the entered password matches the stored password
+    #         if login_credentials[username] == password:
+    #             print("Login successful!")
+    #         else:
+    #             print("Incorrect password.")
+    #             exit()
+            # else:
+            #     print("Username not found.")
 
 
-def mini_statement():
-    print(acc)
-    show_options()
 
 
-def show_options():
-    opts = """
-    Welcome To CareerSoft Bank
-    1. Deposit
-    2. Withdraw
-    3. Balance
-    4. Mini Statement
-    5. Exit
-    """
-    print(opts)
-    ch = input("Please select option from above: ")
-
-    return ch
+       # with open('login_credentials.txt', 'r') as file:
+       #     for line in file:  # reading each word
+       #         for word in line.split():  # displaying the words
+       #             if word == username:
+       #                 for word_ in line.split():
+       #                     if word_ == password:
+       #                         print("Authentication is successful")
+       #                         return True
+       #     return False
+    # Check if the username exists in the login credentials dictionary
 
 
 if __name__ == '__main__':
-    ch_func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
+    from options import show_options
+    import sys
+
+    # print(sys.argv)
+
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+
+    if login(username, password):
+        pass
+    else:
+        print("Username not found")
+        exit()
+
+    x = Transactions()
+    ch_func_mapping = {"1": "deposit", "2": "withdraw", "3": "balance", "4": "mini_statement", "5": "exit"}
     while True:
         ch = show_options()
-
         if ch in ch_func_mapping:
+            opt_func = ch_func_mapping[ch]
             if ch == "5":
                 print("Logged out Successfully")
-                print("Thank you using CareerSoft Banking Application.")
-            ch_func_mapping[ch]()
+                print("Thank you using CareerSoft banking Application")
+                break
+            else:
+                fun = getattr(x, opt_func)
+                fun()
         else:
             print("Invalid Choice, Please enter Valid choice from 1-5")
+
+
+
+
