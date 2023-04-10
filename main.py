@@ -1,59 +1,58 @@
 """
 Main for execution of CSB
 """
-acc = {
-    "AccNo": "A550",
-    "Balance": 50000,
-    "Name": "Mahitha",
-    "Transactions": [{"type": "debit", "amount": 50000, "date": "2023-03-13"}]
-}
+from Transaction import *
+
+LOGGED_IN= False
+
+def login_required(func):
+    def helper(*args, **kwargs):
+        if not LOGGED_IN:
+            login(args[0], args[1])
+        else:
+            func(*args,*kwargs)
+    return helper
 
 
-def deposit():
-    amt = int(input("Enter the amount to deposit: "))
-    acc["Balance"] += amt
-    # acc["Balance"] = acc["Balance"] + amt
-    print("Transaction completed successfully")
-    print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
+    users=[{
+        "user_name":"mahitha",
+        "password":"manjusha@1695"
+ },
+        {
+            "user_name": "satya",
+            "password": "teddy@1695"
 
+        }]
 
-def withdraw():
-    amt = int(input("Enter the amount to withdraw: "))
-    acc["Balance"] = amt - acc["Balance"]
-    print("Transaction completed successfully")
-    print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
+def login(username, password):
+    with open('user.txt') as f:
+        lines= f.readlines()
+        users=lines[1:]
 
+        for user in users:
+            data=user.split(" ")
+            if user['username'] == username and user['password'] == password:
+                return True
 
-def balance():
-    print("Your New Balance is: {}".format(acc["Balance"]))
-    show_options()
+    return False
 
-
-def mini_statement():
-    print("Your last 10 transactions is: {}".format(acc["Transactions"]))
-    show_options()
-
-
-
-def show_options():
-    opts = """
-    Welcome To CareerSoft Bank
-    1. Deposit
-    2. Withdraw
-    3. Balance
-    4. Mini Statement
-    5. Exit
-    """
-    print(opts)
-    ch = input("Please select option from above: ")
-
-    return ch
 
 
 if __name__ == '__main__':
-    ch_func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
+    from Transaction import *
+    import sys
+
+    print(sys.argv)
+
+    uname= input("Enter username: ")
+    password=input("Enter password: ")
+    if login(uname,password):
+        pass
+    else:
+        print("invalid user name or password.")
+        exit
+
+
     while True:
         ch = show_options()
 
