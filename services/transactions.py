@@ -19,7 +19,11 @@ def show_options():
     5. Exit
     """
     print(opts)
-    ch = input("Please select option from above: ")
+    try:
+        ch = int(input("Please select option from above: "))
+    except ValueError:
+        print("Invalid choice.. Please enter only integers.")
+
 
     return ch
 
@@ -47,4 +51,8 @@ def mini_statement():
     print("Inside mini_statement()")
     # show_options()
 
-ch_func_mapping = {"1": deposit, "2": withdraw, "3": balance, "4": mini_statement, "5": exit}
+ch_func_mapping = {1: deposit,
+                   2: withdraw,
+                   3: balance,
+                   4: mini_statement,
+                   5: exit}
