@@ -1,3 +1,4 @@
+Trans_type      Balance     Date
 
 deposit			20111		2023-4-10
 deposit			20252		2023-4-10
