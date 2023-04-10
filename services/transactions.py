@@ -1,7 +1,3 @@
-"""
-@author: Venkata Mulam
-@Date: 03/20/2023
-"""
 from settings.settings import acc
 
 

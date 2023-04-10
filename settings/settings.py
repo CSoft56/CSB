@@ -4,8 +4,9 @@ All settings or constants related to project
 """
 
 acc = {
-    "AccNo": "A100",
+    "AccNo": "A2000",
     "Balance": 20000,
-    "Name": "Venkat",
+    "Name": "Manthan",
     "Transactions": [{"type": "debit", "amount": 20000, "date": "2023-03-12"}]
 }
+
