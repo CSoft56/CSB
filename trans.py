@@ -23,17 +23,32 @@ class Transactions:
                                                                             date_trans=str_trans_date)
             f.write(trans_str)
 
-
     def withdraw(self):
-        amt_1 = int(input("Enter the amount to withdraw: "))
-        if acc["Balance"] <= amt_1:
+        # amt_1 = int(input("Enter the amount to withdraw: "))
+        try:
+            amt_1 = int(input("Enter the amount to withdraw: "))
+            if acc["Balance"] <= amt_1:
+                raise ValueError("Invalid Amount")
+        except Exception:
             print("Error, Insufficient Balance")
-        else:
-            updated = acc["Balance"] - amt_1
-            acc["Balance"] = updated
-            acc["Transactions"].append({'type': 'debit', 'amount': updated, 'date': today.strftime("%Y-%m-%d")})
-            print("Transaction completed successfully")
-            print("Your New Balance is: {}".format(acc["Transactions"][-1]))
+            return
+
+        # if acc["Balance"] <= amt_1:
+        #     print("Error, Insufficient Balance")
+        # else:
+        #     updated = acc["Balance"] - amt_1
+        #     acc["Balance"] = updated
+        #     acc["Transactions"].append({'type': 'debit', 'amount': updated, 'date': today.strftime("%Y-%m-%d")})
+        #     print("Transaction completed successfully")
+        #     print("Your New Balance is: {}".format(acc["Transactions"][-1]))
+
+        updated = acc["Balance"] - amt_1
+        acc["Balance"] = updated
+        acc["Transactions"].append({'type': 'debit', 'amount': updated, 'date': today.strftime("%Y-%m-%d")})
+        print("Transaction completed successfully")
+        print("Your New Balance is: {}".format(acc["Transactions"][-1]))
+
+
 
         with open('statement.txt', 'a') as f:
             type = 'withdraw'

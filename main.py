@@ -17,15 +17,21 @@ acc = {
 
 
 def login(username, password):
-    with open('login_credentials.txt', 'r') as file:
-        lines = file.readlines()                # read all lines at once
-        for line in lines:                       # iterate over each line
-            fields = line.strip().split(":")        # split the line into fields
-            if len(fields) == 2:                 # check if there are two fields
-                if fields[0] == username and fields[1] == password:
-                    print("Authentication successful")
-                    return True
-        return False
+    try:
+        with open('login_credentials.txt', 'r') as file:
+            lines = file.readlines()                # read all lines at once
+            for line in lines:                       # iterate over each line
+                fields = line.strip().split(":")        # split the line into fields
+                if len(fields) == 2:                 # check if there are two fields
+                    if fields[0] == username and fields[1] == password:
+                        print("Authentication successful")
+                        return True
+            return False
+    except FileNotFoundError:
+        print("File not found")
+
+    except Exception as e:
+        print("An error occurred:", e)
     # Close the file
 
 
@@ -46,9 +52,6 @@ def login(username, password):
     #             exit()
             # else:
             #     print("Username not found.")
-
-
-
 
        # with open('login_credentials.txt', 'r') as file:
        #     for line in file:  # reading each word
