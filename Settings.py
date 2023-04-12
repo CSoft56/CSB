@@ -7,7 +7,7 @@ def show_options():
     3. Balance
     4. Mini Statement
     5. Exit
-    """
+        """
     print(opts)
     ch = input("Please select option from above: ")
 
